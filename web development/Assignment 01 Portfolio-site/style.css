@@ -56,8 +56,50 @@
     background:var(--accent);
     transition:width .25s ease;
   }
- 
+  .nav-link:hover::after,.nav-link.active::after{width:100%;}
   .nav-link:hover{color:var(--accent)!important;}
+
+  .navbar-toggler{
+    border:1px solid var(--accent);
+    border-radius:8px;
+    padding:.4rem .6rem;
+  }
+  .navbar-toggler:focus{
+    box-shadow:0 0 0 .2rem var(--accent-soft);
+  }
+  .navbar-toggler-icon{
+    background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%2300e5e5' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width:1.3em;
+    height:1.3em;
+  }
+
+  /* Mobile menu: a fixed-top navbar doesn't push content down when it expands,
+     so give the collapsed panel its own solid background + spacing instead
+     of floating transparently over the hero text below. */
+  @media (max-width: 991.98px){
+    .navbar-collapse{
+      background-color:#161616;
+      border:1px solid var(--border-soft);
+      border-radius:12px;
+      margin-top:.85rem;
+      padding:1rem 1.1rem;
+      max-height:calc(100vh - 100px);
+      overflow-y:auto;
+      box-shadow:0 20px 40px -10px rgba(0,0,0,.5);
+    }
+    .navbar-nav{
+      text-align:center;
+    }
+    .nav-item{
+      margin:.35rem 0;
+    }
+    .nav-link::after{
+      display:none; /* centered underline indicator doesn't read well on mobile */
+    }
+    .navbar-nav .nav-item:last-child{
+      margin-top:.6rem;
+    }
+  }
 
   .btn-accent{
     background-color:var(--accent);
@@ -84,7 +126,6 @@
     padding-top:160px;
     padding-bottom:90px;
     position:relative;
-    background-color: #121212;
   }
   .hero .eyebrow{
     font-size:1.6rem;
@@ -212,9 +253,6 @@
   .project-link:hover{color:var(--accent);}
 
   /* ===== SKILLS ===== */
-  #skills{
-    background-color: #121212;
-  }
   .skill-group{margin-bottom:1.6rem;}
   .skill-group h6{
     color:var(--text-muted);
