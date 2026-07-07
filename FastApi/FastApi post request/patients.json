@@ -48,15 +48,5 @@
     "weight": 75,
     "bmi": 31.22,
     "verdict": "Obese"
-  },
-  "P006": {
-    "name": "jakaria",
-    "city": "dhaka",
-    "age": 19,
-    "gender": "male",
-    "height": 5.9,
-    "weight": 70.0,
-    "bmi": 2.01,
-    "verdict": "Underweight"
   }
 }
