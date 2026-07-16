@@ -25,7 +25,7 @@ patient_dict = {'name':'jakaria','email':'kajaria@gmail.com','age':33,'address':
 patient1 = Patient(**patient_dict)
 
 temp = patient1.model_dump(exclude=['name','age']) # include =['name','age'] this only show name and age and exclude=['name','age'] this is show without name and age  and other exclude_unset = True
-
+print(patient1.name)
 print(temp)
 
    
