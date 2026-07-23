@@ -14,14 +14,14 @@ def create_todo(db:Session,todo:CreateTodo, user_id:int):
     db.commit()
 
 
-def get_all_todo(db:Session):
-    return db.query(models.todo.Todos).all()
+def get_all_todo(db:Session,owner_id:int):
+    return db.query(models.todo.Todos).filter(models.todo.Todos.owner_id == owner_id).all()
 
 
 
 
-def update_todo(db:Session,todo_id : int, updateTodo:UpdateTodo):
-    todo = db.query(models.todo.Todos).filter(models.todo.Todos.id == todo_id).first()
+def update_todo(db:Session,todo_id : int, updateTodo:UpdateTodo,owner_id:int):
+    todo = db.query(models.todo.Todos).filter(models.todo.Todos.owner_id == owner_id).filter(models.todo.Todos.id == todo_id).first()
 
     if not todo:
         raise HTTPException(status_code=404,detail="todo not found")
@@ -35,11 +35,11 @@ def update_todo(db:Session,todo_id : int, updateTodo:UpdateTodo):
 
 
 
-def delete_todo(db:Session,todo_id : int):
-    todo = db.query(models.todo.Todos).filter(models.todo.Todos.id == todo_id).first()
+def delete_todo(db:Session,todo_id : int,owner_id:int):
+    todo = db.query(models.todo.Todos).filter(models.todo.Todos.owner_id == owner_id).filter(models.todo.Todos.id == todo_id).first()
 
     if not todo:
         raise HTTPException(status_code=404,detail="todo not found")
 
-    db.query(models.todo.Todos).filter(models.todo.Todos.id == todo_id).delete()
+    db.query(models.todo.Todos).filter(models.todo.Todos.owner_id == owner_id).filter(models.todo.Todos.id == todo_id).delete()
     db.commit()

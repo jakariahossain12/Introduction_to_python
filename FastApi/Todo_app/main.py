@@ -5,11 +5,13 @@ from database import engine
 
 from app.routers import todo
 from app.routers import user
+from app.routers import admin
 
 app = FastAPI(title="todo api")
 models.Base.metadata.create_all(bind=engine)
 app.include_router(todo.router)
 app.include_router(user.router)
+app.include_router(admin.router)
 
 @app.get("/")
 def root():

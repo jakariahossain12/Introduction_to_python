@@ -9,7 +9,7 @@ class CreateTodo(BaseModel):
     completed: bool
 
 class UpdateTodo(BaseModel):
-    title: Optional[int] = Field(default=None)
-    description: Optional[int] = Field(default=None)
+    title: Optional[str] = Field(default=None)
+    description: Optional[str] = Field(default=None)
     priority: Optional[int] = Field(default=None)
     completed: Optional[bool] = Field(default=None)
